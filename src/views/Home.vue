@@ -5,13 +5,47 @@
 
         <div class="card mb-3">
           <div class="card-body">
-            <router-link to="/create">
-              <input type="text" class="form-control" placeholder="Create Post" />
-            </router-link>
+            <input
+              @click="createPost"
+              type="text"
+              class="form-control"
+              placeholder="Create Post">
           </div>
         </div>
         
-        <PostCard :posts="collection" />
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-9">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-star"></i> Top</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-certificate"></i> New</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-chart-line"></i> Rising</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-3">
+                <select name="" id="" class="form-control">
+                  <option value="">Today</option>
+                  <option value="">This Week</option>
+                  <option value="">This Month</option>
+                  <option value="">All Time</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <span v-for="entity in collection" :key="entity.id">
+              <PostLink :post="entity" />
+            </span>
+          </div>
+        </div>
         
       </div>
 
@@ -40,18 +74,25 @@
 <script>
 import parse from 'date-fns/parse'
 import { mapState, mapActions } from 'vuex';
-import PostCard from '@/components/PostCard';
+import PostLink from '@/components/PostLink';
 
 export default {
   name: 'Home',
   components: {
-    PostCard
+    PostLink
+  },
+  data() {
+    return {
+      logged: false
+    }
   },
   created() {
     this.index();
   },
   computed: {
-    ...mapState(['collection']),
+    ...mapState('post_vuex', [
+        'collection'
+      ]),
   },
   methods: {
     ...mapActions('post_vuex', [
@@ -61,6 +102,9 @@ export default {
         'updateAction', 
         'destroyAction'
     ]),
+    createPost() {
+      this.$router.push('create');
+    },
     index() {
       this.indexAction();
     },
