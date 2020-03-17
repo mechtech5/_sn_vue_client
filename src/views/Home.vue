@@ -11,7 +11,7 @@
           </div>
         </div>
         
-        <PostCard :posts="posts" />
+        <PostCard :posts="collection" />
         
       </div>
 
@@ -51,12 +51,18 @@ export default {
     this.index();
   },
   computed: {
-    ...mapState(['posts']),
+    ...mapState(['collection']),
   },
   methods: {
-    ...mapActions(['getAllPosts', 'getOnePost', 'savePost', 'updatePost', 'deletePost']),
+    ...mapActions('post_vuex', [
+        'indexAction', 
+        'showAction', 
+        'storeAction', 
+        'updateAction', 
+        'destroyAction'
+    ]),
     index() {
-      this.getAllPosts();
+      this.indexAction();
     },
   },
 }

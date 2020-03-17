@@ -1,19 +1,19 @@
 import Api from './Api'
 
 export default {
-  all() {
+  index() {
     return Api.get('posts')
   },
-  getOne(id) {
+  show(id) {
     return Api.get(`posts/${id}`)
   },
-  save(data) {
+  store(data) {
     return Api.post('posts', data)
   },
   update(id, data) {
     return Api.put(`posts/${id}`, data)
   },
-  delete(id) {
+  destroy(id) {
     return Api.delete(`posts/${id}`)
   }
 }

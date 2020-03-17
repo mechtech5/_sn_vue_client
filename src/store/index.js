@@ -1,24 +1,25 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex)
+// Modules
+import post_vuex from './modules/post_vuex'
 
-import Post from '@/apis/Post'
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    posts: []
+    user: {}
   },
-  mutations: {
-    SET_ALL: (state, payload) => state.posts = payload,
+  getters: {
+    user: state => state.user,
   },
   actions: {
-    getAllPosts({commit}) {
-      Post.all().then(response => {
-        commit('SET_ALL', response.data);
-      })
-    }
+    setUser: ({commit}, user) => commit('SET_USER', user)
+  },
+  mutations: {
+    SET_USER: (state, user) => state.user = user
   },
   modules: {
+    post_vuex
   }
 })
