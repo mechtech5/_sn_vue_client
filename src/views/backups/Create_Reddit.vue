@@ -61,3 +61,20 @@
     </div>
   </div>
 </template>
+
+// <div class="card">
+//   <div class="card-body">
+//     <h6 class="text-center card-subtitle mt-5 mb-2">Today's Top Growing Communities</h6>
+//     <ul class="list-group mb-2">
+//       <li class="list-group-item">1 Cras justo odio</li>
+//       <li class="list-group-item">2 Dapibus ac facilisis in</li>
+//       <li class="list-group-item">3 Morbi leo risus</li>
+//       <li class="list-group-item">4 Porta ac consectetur ac</li>
+//       <li class="list-group-item">5 Vestibulum at eros</li>
+//     </ul>
+//     <button type="button" class="text-primary btn btn-light ml-1">Sports</button>
+//     <button type="button" class="text-primary btn btn-light ml-1">Sports</button>
+//     <button type="button" class="text-primary btn btn-light ml-1">Sports</button>
+//     <button type="button" class="text-primary btn btn-light ml-1">Sports</button>
+//   </div>
+// </div>

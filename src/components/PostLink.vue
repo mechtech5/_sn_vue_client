@@ -1,17 +1,23 @@
 <template>
   <div class="row">
-    <div class="col-1">
-      <img
-        @click="showProfile(post.user.username)"
-        src="https://via.placeholder.com/24"
-        class="profile-link mt-2 rounded-circle"
-        :alt="post.user.username">
-    </div>
-    <div class="col-1">
-      <div class="like" title="Like">
-        <i class="fas fa-chevron-up"></i>
-        <span>12</span>
+    <div class="col-2">
+      <div class="row">
+        <div class="col-4">
+          <img
+            @click="showProfile(post.user.username)"
+            src="https://via.placeholder.com/32"
+            class="profile-link mt-2 rounded-circle"
+            :alt="post.user.username" />
+        </div>
+        <div class="col-8">
+          <div class="text-center">
+            <i class="fas fa-chevron-up"></i>
+            <p style="font-size: 0.8em">123</p>
+          </div>
+        </div>
       </div>
+      
+      
     </div>
     <div class="col-10">
       <div class="mb-4">

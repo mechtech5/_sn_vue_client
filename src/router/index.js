@@ -1,26 +1,33 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Create from '../views/Create.vue'
-import Post from '../views/Post.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: '/', name: 'Home',
     component: Home
   },
   {
-    path: '/create',
-    name: 'Create',
-    component: Create
+    path: '/login', name: 'Login',
+    component: () => import('../views/Login.vue')
   },
   {
-    path: '/post/:slug',
-    name: 'Post',
-    component: Post
+    path: '/register', name: 'Register',
+    component: () => import('../views/Register.vue')
+  },
+  {
+    path: '/forgot-password', name: 'ForgotPassword',
+    component: () => import('../views/ForgotPassword.vue')
+  },
+  {
+    path: '/create', name: 'Create',
+    component: () => import('../views/Create.vue')
+  },
+  {
+    path: '/post/:slug', name: 'Post',
+    component: () => import('../views/Post.vue')
   }
 ]
 

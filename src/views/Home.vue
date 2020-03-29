@@ -50,20 +50,14 @@
       </div>
 
       <div class="col-4">
-        <div class="card">
-          <div class="card-body">
-            <h6 class="text-center card-subtitle mt-5 mb-2">Today's Top Growing Communities</h6>
-            <ul class="list-group mb-2">
-              <li class="list-group-item">1 Cras justo odio</li>
-              <li class="list-group-item">2 Dapibus ac facilisis in</li>
-              <li class="list-group-item">3 Morbi leo risus</li>
-              <li class="list-group-item">4 Porta ac consectetur ac</li>
-              <li class="list-group-item">5 Vestibulum at eros</li>
-            </ul>
-            <button type="button" class="text-primary btn btn-light ml-1">Sports</button>
-            <button type="button" class="text-primary btn btn-light ml-1">Sports</button>
-            <button type="button" class="text-primary btn btn-light ml-1">Sports</button>
-            <button type="button" class="text-primary btn btn-light ml-1">Sports</button>
+        <div class="w-75 m-auto">
+          <input type="text" class="form-control form-control-lg" placeholder="Topics">
+          <br>
+          <div>
+            <img
+              src="https://via.placeholder.com/32"
+              class="profile-link rounded-circle" />
+            <span class="ml-2 mt-3">Topic Name</span>
           </div>
         </div>
       </div>
@@ -72,8 +66,8 @@
 </template>
 
 <script>
-import parse from 'date-fns/parse'
-import { mapState, mapActions } from 'vuex';
+// import parse from 'date-fns/parse'
+import { mapState } from 'vuex';
 import PostLink from '@/components/PostLink';
 
 export default {
@@ -83,31 +77,19 @@ export default {
   },
   data() {
     return {
-      logged: false
+      
     }
   },
   created() {
-    this.index();
+    this.$store.dispatch('post_vuex/index');
   },
   computed: {
-    ...mapState('post_vuex', [
-        'collection'
-      ]),
+    ...mapState('post_vuex', ['collection']),
   },
   methods: {
-    ...mapActions('post_vuex', [
-        'indexAction', 
-        'showAction', 
-        'storeAction', 
-        'updateAction', 
-        'destroyAction'
-    ]),
     createPost() {
       this.$router.push('create');
-    },
-    index() {
-      this.indexAction();
-    },
+    }
   },
 }
 </script>
