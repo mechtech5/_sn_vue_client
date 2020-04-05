@@ -6,7 +6,7 @@
           <div class="card-header">Register</div>
 
           <div class="card-body">
-            <form @submit="doRegister">
+            <form @submit.prevent="doRegister">
               <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
@@ -27,7 +27,7 @@
                 </label>
 
                 <div class="col-md-6">
-                  <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
+                  <input type="password" v-model="password" class="form-control" placeholder="Password" required>
                 </div>
               </div>
               <div class="form-group row mb-0">
@@ -47,24 +47,22 @@
 </template>
 
 <script>
+import Auth from '@/api/Auth';
 export default {
   data() {
     return {
-      email: '',
-      password: ''
+      name: null,
+      email: null,
+      password: null
     }
   },
-  created() {
-    this.checkAuth();
-  },
   methods: {
-    checkAuth() {
-      if (localStorage.getItem('token')) {
-        this.$router.push('/');
-      }
-    },
-    register() {
-      Auth.register({email: this.email, password: this.password}).then(response => {
+    doRegister() {
+      Auth.register({
+        name: this.name,
+        email: this.email,
+        password: this.password
+      }).then(response => {
         localStorage.setItem('token', response.data.token);
         this.$store.dispatch('auth_vuex/set_auth', true);
         this.$store.dispatch('auth_vuex/set_user', response.data.user);

@@ -75,11 +75,6 @@ export default {
   components: {
     PostLink
   },
-  data() {
-    return {
-      env: process.env
-    }
-  },
   created() {
     this.$store.dispatch('post_vuex/index');
   },

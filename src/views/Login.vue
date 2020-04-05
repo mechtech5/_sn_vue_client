@@ -61,17 +61,12 @@ export default {
       password: ''
     }
   },
-  created() {
-    this.checkAuth();
-  },
   methods: {
-    checkAuth() {
-      if (localStorage.getItem('token')) {
-        this.$router.push('/');
-      }
-    },
     doLogin() {
-      Auth.login({email: this.email, password: this.password}).then(response => {
+      Auth.login({
+        email: this.email,
+        password: this.password
+      }).then(response => {
         localStorage.setItem('token', response.data.token);
         this.$store.dispatch('auth_vuex/set_auth', true);
         this.$store.dispatch('auth_vuex/set_user', response.data.user);

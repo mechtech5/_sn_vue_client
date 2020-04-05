@@ -17,23 +17,23 @@ const routes = [
   {
     path: '/login', name: 'Login',
     component: () => import('../views/Login.vue'),
-    meta: {
-      middleware: [guest]
-    }
+    // meta: {
+    //   middleware: [guest]
+    // }
   },
   {
     path: '/register', name: 'Register',
     component: () => import('../views/Register.vue'),
-    meta: {
-      middleware: [guest]
-    }
+    // meta: {
+    //   middleware: [guest]
+    // }
   },
   {
     path: '/forgot-password', name: 'ForgotPassword',
     component: () => import('../views/ForgotPassword.vue'),
-    meta: {
-      middleware: [guest]
-    }
+    // meta: {
+    //   middleware: [guest]
+    // }
   },
   {
     path: '/create', name: 'Create',
@@ -54,7 +54,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes
 })

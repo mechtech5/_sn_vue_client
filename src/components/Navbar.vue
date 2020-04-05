@@ -1,9 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
-      <router-link class="navbar-brand" to='/'>
-        Jigsawme
-      </router-link>
+      <router-link class="navbar-brand" to='/'>Jigsawme</router-link>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -26,10 +24,10 @@
           </ul>
           <ul v-else class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
+              <router-link class="nav-link" to="/login">Login</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
+              <router-link class="nav-link" to="/register">Register</router-link>
             </li>
           </ul>
       </div>
